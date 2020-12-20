@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`IsString returns error if optional string is not a string 1`] = `
+Array [
+  ValidationError {
+    "children": Array [],
+    "constraints": Object {
+      "isString": "optionalStringValue must be a string",
+    },
+    "property": "optionalStringValue",
+    "target": Fixture {
+      "optionalStringValue": 42,
+      "stringValue": "string-value",
+    },
+    "value": 42,
+  },
+]
+`;
+
+exports[`IsString returns error if required string is omitted 1`] = `
+Array [
+  ValidationError {
+    "children": Array [],
+    "constraints": Object {
+      "isDefined": "stringValue should not be null or undefined",
+      "isString": "stringValue must be a string",
+    },
+    "property": "stringValue",
+    "target": Fixture {
+      "optionalStringValue": undefined,
+      "stringValue": undefined,
+    },
+    "value": undefined,
+  },
+]
+`;
