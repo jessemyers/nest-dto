@@ -1,2 +1,2 @@
-export class Foo {
-}
+export * from './decorators';
+export * from './types';

@@ -1,7 +1,7 @@
 import { plainToClass } from 'class-transformer';
 import { validate } from 'class-validator';
 
-import { IsString } from '..';
+import { IsString } from '../is-string';
 
 class Fixture {
     @IsString()

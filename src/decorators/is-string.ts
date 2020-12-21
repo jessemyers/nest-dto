@@ -5,12 +5,12 @@ import {
     IsOptional,
     IsString as IsStringValidator,
 } from 'class-validator';
-import { compose, ComposedPropertyDecorator } from './compose';
 
-export interface StringOptions {
-    description?: string;
+import { ComposedPropertyDecorator, DecoratorOptions } from '../types';
+import { compose } from './compose';
+
+export interface StringOptions extends DecoratorOptions {
     format?: string,
-    optional?: boolean;
 }
 
 export function IsString(options: StringOptions = {}): ComposedPropertyDecorator {

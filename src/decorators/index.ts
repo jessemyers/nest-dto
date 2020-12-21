@@ -1,1 +1,1 @@
-export * from './IsString';
+export * from './is-string';
