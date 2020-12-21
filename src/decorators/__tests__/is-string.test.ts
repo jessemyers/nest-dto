@@ -4,10 +4,10 @@ import { validate } from 'class-validator';
 import { IsString } from '../is-string';
 
 class Fixture {
-    @IsString()
+    @IsString({ expose: true })
     public stringValue!: string;
 
-    @IsString({ optional: true })
+    @IsString({ expose: true, optional: true })
     public optionalStringValue!: string;
 }
 
