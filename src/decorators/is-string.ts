@@ -1,25 +1,18 @@
-import { ApiProperty } from '@nestjs/swagger';
 import { IsString as IsStringValidator } from 'class-validator';
 
-import { DecoratorBuilder } from '../builder';
+import { DefaultDecoratorBuilder } from '../builders';
 import { ComposedPropertyDecorator, DecoratorOptions } from '../types';
 
-export interface StringOptions extends DecoratorOptions {
-    format?: string,
-}
-
-export function IsString(options: StringOptions = {}): ComposedPropertyDecorator {
-    return DecoratorBuilder.create(
-        IsStringValidator(),
+export function IsString(options: DecoratorOptions = {}): ComposedPropertyDecorator {
+    const builder = new DefaultDecoratorBuilder(
         options,
-    ).add(
-        // TODO: add api property to builder sub-type
-        /* Document as an API Property.
-         */
-        ApiProperty({
-            description: options.description,
-            format: options.format,
-            type: 'string',
-        }),
-    ).build();
+        [
+            IsStringValidator(),
+        ],
+    );
+    // TODO: we cannot chain these types because of the return type
+    builder.api();
+    builder.maybeExpose();
+    builder.maybeRequired();
+    return builder.build();
 }
