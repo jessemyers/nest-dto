@@ -1,12 +1,16 @@
 import { InputDecorator, ComposedPropertyDecorator, DecoratorOptions } from '../types';
 
 export class DecoratorBuilder {
+    public readonly decorators: InputDecorator[];
+
     constructor(
         public readonly options: DecoratorOptions,
-        public readonly decorators: InputDecorator[] = [],
-    ) {}
+        ...decorators: InputDecorator[]
+    ) {
+        this.decorators = decorators;
+    }
 
-    public add(decorator: InputDecorator): DecoratorBuilder {
+    public add(decorator: InputDecorator): this {
         this.decorators.push(decorator);
         return this;
     }
